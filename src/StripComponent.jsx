@@ -16,8 +16,9 @@ const StripComponent = () => {
     });
 
   return (
-    <Box className="">
+    <Box className="rounded-lg ">
       <Card
+        borderRadius={"lg"}
         margin={2}
         padding={2}
         textColor={"black"}

@@ -17,7 +17,7 @@ const FormComponent = ({
   console.log("read only ;", readOnly);
 
   return (
-    <Box margin={2} padding={2} textColor={"black"} className="bg-skin">
+    <Box margin={2}  paddingTop={2} textColor={"black"} className="bg-skin rounded-lg">
       <form onSubmit={handleSubmit}>
         <Flex direction={"column"}>
           <Flex direction={"row"}>

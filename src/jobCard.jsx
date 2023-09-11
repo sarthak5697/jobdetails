@@ -7,12 +7,13 @@ import MyProgressBar from "./ProgressBar";
 const JobCard = () => {
   return (
     <Card
-        margin={2}
+    rounded={"md"}
+      margin={2}
       padding={2}
       textColor={"white"}
       direction={{ base: "column", sm: "row" }}
-      
-      className="bg-cardColor"
+      w={"full"}
+      className="bg-cardColor w-100"
     >
       <VStack align="stretch" width={"100%"}>
         <Text className="text-medium">PO-JOB00002</Text>
