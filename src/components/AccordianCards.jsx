@@ -5,7 +5,7 @@ import JobCard from "./jobCard";
 import FormInput from "./FormInput";
 import { useRef, useState, useEffect } from "react";
 import StripComponent from "./StripComponent";
-import FormComponent from "./FormComponent";
+import FormComponent from "../FormComponent";
 import {
   Accordion,
   AccordionItem,

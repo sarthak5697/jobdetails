@@ -1,9 +1,9 @@
 import React from "react";
 import { Flex, Text, Box, VStack, Card, Button } from "@chakra-ui/react";
-import JobCard from "./jobCard";
-import FormInput from "./FormInput";
+import JobCard from "./components/jobCard";
+import FormInput from "./components/FormInput";
 import { useRef, useState } from "react";
-import StripComponent from "./StripComponent";
+import StripComponent from "./components/StripComponent";
 import { Wrap, WrapItem, Center } from "@chakra-ui/react";
 
 const FormComponent = ({

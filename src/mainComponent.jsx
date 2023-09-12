@@ -1,10 +1,10 @@
 import React from "react";
 import { Flex, Text, Box, VStack, Card, Button } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import JobCard from "./jobCard";
-import FormInput from "./FormInput";
+import JobCard from "./components/jobCard";
+import FormInput from "./components/FormInput";
 import { useRef, useState, useEffect } from "react";
-import StripComponent from "./StripComponent";
+import StripComponent from "./components/StripComponent";
 import FormComponent from "./FormComponent";
 import {
   Accordion,
@@ -13,7 +13,7 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
-import AccordianCards from "./AccordianCards";
+import AccordianCards from "./components/AccordianCards";
 
 const MainComponent = () => {
   const [isSaveButtonVisible, setIsSaveButtonVisible] = useState(true);

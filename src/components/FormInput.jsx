@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "../styles/main__Component.css";
 import { Flex, Text, Box, VStack, Card, Button } from "@chakra-ui/react";
 
 const FormInput = (props) => {

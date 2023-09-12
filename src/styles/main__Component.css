@@ -19,7 +19,7 @@ code {
 .arrow-box {
   width: 20px; /* Adjust the width as needed */
   height: 80px; /* Adjust the height as needed */
-  background-image: url("../public/arrow.png");
+  background-image: url("../../public/arrow.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
