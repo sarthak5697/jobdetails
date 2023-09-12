@@ -3,7 +3,7 @@ import { Flex, Text, Box, VStack, Card, Button } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import JobCard from "./jobCard";
 import FormInput from "./FormInput";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import StripComponent from "./StripComponent";
 import FormComponent from "./FormComponent";
 import {
@@ -13,6 +13,7 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from "@chakra-ui/react";
+import AccordianCards from "./AccordianCards";
 
 const MainComponent = () => {
   const [isSaveButtonVisible, setIsSaveButtonVisible] = useState(true);
@@ -46,75 +47,79 @@ const MainComponent = () => {
       reworkQty: "",
       rejectedQty: "",
     });
-    console.log(
-      "Before setting isSaveButtonVisible to false:",
-      isSaveButtonVisible
-    );
+
+    // console.log(
+    //   "Before setting isSaveButtonVisible to false:",
+    //   isSaveButtonVisible
+    // );
     setIsSaveButtonVisible(false);
-    console.log(
-      "After setting isSaveButtonVisible to false:",
-      isSaveButtonVisible
-    );
+
+    // console.log(
+    //   "After setting isSaveButtonVisible to false:",
+    //   isSaveButtonVisible
+    // );
   };
+  const initialSelectedIndex = 0;
+
+  const [isSelectedArray, setIsSelectedArray] = useState(Array(6).fill(false));
+
+  // Set the initial tab as selected
+  useEffect(() => {
+    const updatedIsSelectedArray = isSelectedArray.map(
+      (_, index) => index === initialSelectedIndex
+    );
+    setIsSelectedArray(updatedIsSelectedArray);
+  }, [initialSelectedIndex]);
+
+  // Handle tab selection for a specific tab index
+  const handleTabClick = (index) => {
+    const updatedIsSelectedArray = isSelectedArray.map((_, i) => i === index); // Set only the clicked tab as selected
+    setIsSelectedArray(updatedIsSelectedArray);
+  };
+
   return (
     <Box backgroundColor={"white"}>
       <div className="hidden sm:block">
+        {/* Tab and Desktop View  */}
+
         <Tabs isManual variant="enclosed" style={{ backgroundColor: null }}>
           <div className="w-100 h-100  md:col-span-1 md:col-start-1">
             <Flex direction={"row"}>
-              <TabList style={{}} className="base:w-100 sm:w-1/3">
+              <TabList
+                style={{}}
+                backgroundColor={"skin"}
+                className="base:w-100 sm:w-1/3"
+                boxShadow="2px 2px 6px rgba(0, 0, 0, 0.1)"
+                border="1px solid gray"
+                borderColor={"rgba(0, 0, 0, 0.2)"}
+              >
                 <Flex direction={"column"} className="w-full">
-                  <Tab
-                    _selected={{
-                      //  borderRightRadius: "50%", Change the border radius when selected
-                      backgroundColor: "#26a2b5", // Background color when selected
-                    }}
-                  >
-                    <JobCard
-                      style={{
-                        backgroundColor: "#5cb047",
-                        borderRightRadius: "50%", // Change the border radius of JobCard when the tab is selected
+                  {isSelectedArray.map((isSelected, index) => (
+                    <Tab
+                      key={index}
+                      _selected={{
+                        backgroundColor: "",
                       }}
-                    />
-                  </Tab>
-                  <Tab
+                      onClick={() => handleTabClick(index)}
+                    >
+                      <Flex direction={"row"} align="center" justify="center">
+                        <JobCard className="" />
+                        {isSelected && (
+                          <div className="arrow-box bg-red-400 w-2 my-2 p-0 rounded-2xl mx-2"></div>
+                        )}
+                      </Flex>
+                    </Tab>
+                  ))}
+                  {/* <Tab
                     _selected={{
-                      backgroundColor: "#26a2b5", // Background color when selected
+                      backgroundColor: "#26a2b5",
                     }}
                   >
                     <JobCard />
-                  </Tab>
-                  <Tab
-                    _selected={{
-                      backgroundColor: "#26a2b5", // Background color when selected
-                    }}
-                  >
-                    <JobCard />
-                  </Tab>
-                  <Tab
-                    _selected={{
-                      backgroundColor: "#26a2b5", // Background color when selected
-                    }}
-                  >
-                    <JobCard />
-                  </Tab>
-                  <Tab
-                    _selected={{
-                      backgroundColor: "#26a2b5", // Background color when selected
-                    }}
-                  >
-                    <JobCard />
-                  </Tab>
-                  <Tab
-                    _selected={{
-                      backgroundColor: "#26a2b5", // Background color when selected
-                    }}
-                  >
-                    <JobCard />
-                  </Tab>
+                  </Tab> */}
                 </Flex>
               </TabList>
-              <TabPanels backgroundColor={"#26a2b5"} className="w-2/3 ">
+              <TabPanels backgroundColor={""} className="w-2/3 ">
                 <TabPanel>
                   <div className="w-full h-full  md:col-span-2 md:col-start-2 p-2">
                     <Flex direction={"column"}>
@@ -184,49 +189,18 @@ const MainComponent = () => {
           </div>
         </Tabs>
       </div>
-      <div className="sm:hidden" id="mobile-view-accordian">
-        <Accordion allowToggle>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <JobCard />
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              <FormComponent />
-            </AccordionPanel>
-          </AccordionItem>
 
-          <AccordionItem>
-            <AccordionButton>
-              <JobCard />
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <FormComponent />
-            </AccordionPanel>
-          </AccordionItem>
+      {/* Mobile View  */}
 
-          <AccordionItem>
-            <AccordionButton>
-              <JobCard />
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <FormComponent />
-            </AccordionPanel>
-          </AccordionItem>
+      <div className="sm:hidden m-2" id="mobile-view-accordian">
+        <Accordion allowToggle >
 
-          <AccordionItem>
-            <AccordionButton>
-              <JobCard />
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <FormComponent />
-            </AccordionPanel>
-          </AccordionItem>
+         <AccordianCards/>
+         <AccordianCards/>
+         <AccordianCards/>
+         <AccordianCards/>
+
+
         </Accordion>
       </div>
     </Box>

@@ -4,16 +4,25 @@ import Progress_bar from "./ProgressBar";
 import ProgressBar from "./ProgressBar";
 import MyProgressBar from "./ProgressBar";
 
-const JobCard = () => {
+const JobCard = ({ isSelected }) => {
+  // const cardBorderStyle = isSelected
+  //   ? {
+  //       borderRightWidth: "4px",
+  //       borderRightColor: "blue",
+  //     }
+  //   : {};
+
   return (
     <Card
-    rounded={"md"}
-      margin={2}
+      style={null}
+      rounded={"md"}
+      marginY={2}
       padding={2}
       textColor={"white"}
       direction={{ base: "column", sm: "row" }}
       w={"full"}
       className="bg-cardColor w-100"
+      id="arrow-right"
     >
       <VStack align="stretch" width={"100%"}>
         <Text className="text-medium">PO-JOB00002</Text>

@@ -13,14 +13,15 @@ const FormComponent = ({
   isSaveButtonVisible,
   readOnly,
 }) => {
-  console.log("save button boolean L", isSaveButtonVisible);
-  console.log("read only ;", readOnly);
+
+  // console.log("save button boolean L", isSaveButtonVisible);
+  // console.log("read only ;", readOnly);
 
   return (
-    <Box margin={2}  paddingTop={2} textColor={"black"} className="bg-skin rounded-lg">
+    <Box margin={2}  paddingTop={0} textColor={"black"} className="bg-skin rounded-lg">
       <form onSubmit={handleSubmit}>
         <Flex direction={"column"}>
-          <Flex direction={"row"}>
+          <Flex direction={{base:'column',sm:'row'}} justifyContent="space-between">
             <FormInput
               name="machine"
               placeholder="Machine"
@@ -35,8 +36,15 @@ const FormComponent = ({
               readOnly={readOnly}
               onChange={handleChange}
             />
+            <FormInput
+              name="reworkQty"
+              placeholder="Rework Qty"
+              label="Rework Qty"
+              readOnly={readOnly}
+              onChange={handleChange}
+            />
           </Flex>
-          <Flex direction={"row"}>
+          <Flex direction={{base:'column',sm:'row'}} justifyContent="space-between">
             <FormInput
               name="targetQty"
               placeholder="Targeted Qty"
@@ -51,16 +59,7 @@ const FormComponent = ({
               readOnly={readOnly}
               onChange={handleChange}
             />
-          </Flex>
-          <Flex direction={"row"}>
-            <FormInput
-              name="reworkQty"
-              placeholder="Rework Qty"
-              label="Rework Qty"
-              readOnly={readOnly}
-              onChange={handleChange}
-            />
-            <FormInput
+             <FormInput
               name="rejectedQty"
               placeholder="Rejection Qty"
               label="Rejection Qty"
@@ -68,15 +67,16 @@ const FormComponent = ({
               onChange={handleChange}
             />
           </Flex>
-        </Flex>
-      </form>
-      <Flex justifyContent="center" padding={5}>
+          <Flex justifyContent="center" marginBottom={2}>
         {isSaveButtonVisible && !readOnly && (
           <Button type="submit" backgroundColor="#15616d" textColor="white" size={"md"}>
             Save Data
           </Button>
         )}
       </Flex>
+        </Flex>
+      </form>
+     
     </Box>
   );
 };

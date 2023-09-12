@@ -9,10 +9,12 @@ module.exports = {
       large: "20px",
       medium: "15px",
     small: "12px",
+    smallMedium: "13px",
 
     },
     extend: {
       colors: {
+        'cardBlue':'#15616d',
         'cardColor':'#15616d',
         'skin':'#fff9ed',
         "card-blue": "#AFDBF5",
